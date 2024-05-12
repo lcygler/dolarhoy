@@ -1,0 +1,20 @@
+body {
+  font-size: 14px;
+}
+
+#reloadBtn {
+  background-color: transparent;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  font-size: inherit;
+  padding: 0;
+}
+
+#reloadBtn:focus {
+  outline: none;
+}
+
+#lastUpdated {
+  color: gray;
+}
