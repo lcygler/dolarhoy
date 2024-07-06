@@ -18,3 +18,8 @@ body {
 #lastUpdated {
   color: gray;
 }
+
+.custom-th {
+  background-color: #08A045 !important;
+  color: white !important;
+}

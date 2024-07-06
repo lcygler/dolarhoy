@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   reloadBtn.addEventListener("click", async () => {
     await loadData();
   });
-
   await loadData();
 });
 
@@ -42,22 +41,22 @@ const createRow = (dolar) => {
 
 const getDolarData = async () => {
   try {
-    const res = await fetch("https://dolarapi.com/v1/dolares");
+    const response = await fetch("https://dolarapi.com/v1/dolares");
 
-    if (!res.ok) {
+    if (!response.ok) {
       throw new Error("Error al obtener los datos.");
     }
 
-    const json = await res.json();
-    return mapDolarData(json);
+    const data = await response.json();
+    return mapDolarData(data);
   } catch (error) {
     console.error(error.message);
     return [];
   }
 };
 
-const mapDolarData = (json) => {
-  return json
+const mapDolarData = (data) => {
+  return data
     .map((dolar) => {
       let nombre = "";
 
@@ -87,7 +86,12 @@ const mapDolarData = (json) => {
           nombre = dolar.nombre;
       }
 
-      return { nombre, compra: dolar.compra, venta: dolar.venta, order: dolarOrder[dolar.casa] };
+      return {
+        nombre: nombre,
+        compra: dolar.compra,
+        venta: dolar.venta,
+        order: dolarOrder[dolar.casa],
+      };
     })
     .sort((a, b) => a.order - b.order);
 };

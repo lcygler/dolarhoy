@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "DolarHoy",
+  "name": "Dólar Hoy",
   "version": "1.0",
-  "description": "Cotización del dólar.",
+  "description": "Cotizaciones del dólar.",
   "icons": {
     "16": "img/icon16.png",
     "48": "img/icon48.png",
