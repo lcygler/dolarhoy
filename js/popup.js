@@ -1,14 +1,20 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const reloadBtn = document.getElementById("reloadBtn");
-  reloadBtn.addEventListener("click", async () => {
-    await loadData();
-  });
-  await loadData();
+  reloadBtn.addEventListener("click", loadData);  
+  loadData();
 });
 
 const loadData = async () => {
-  const dolarData = await getDolarData();
   const tableBody = document.querySelector("#table tbody");
+  tableBody.innerHTML = '<tr><td colspan="3">Cargando...</td></tr>';
+  
+  const dolarData = await getDolarData();
+  
+  if (dolarData.length === 0) {
+    tableBody.innerHTML = '<tr><td colspan="3">Error al obtener datos.</td></tr>';
+    return;
+  }
+
   tableBody.innerHTML = "";
 
   dolarData.forEach((dolar) => {
@@ -44,7 +50,7 @@ const getDolarData = async () => {
     const response = await fetch("https://dolarapi.com/v1/dolares");
 
     if (!response.ok) {
-      throw new Error("Error al obtener los datos.");
+      throw new Error("Error al obtener datos.");
     }
 
     const data = await response.json();
