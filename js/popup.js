@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const reloadBtn = document.getElementById("reloadBtn");
-  reloadBtn.addEventListener("click", loadData);  
+  // const reloadBtn = document.getElementById("reloadBtn");
+  // reloadBtn.addEventListener("click", loadData);  
   loadData();
 });
 
